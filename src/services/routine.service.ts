@@ -2,6 +2,7 @@ import {
   doc,
   getDoc,
   setDoc,
+  deleteDoc,
   collection,
   query,
   where,
@@ -23,8 +24,14 @@ export async function getRoutine(date: string): Promise<RoutineRecord | null> {
   return docSnap.data() as RoutineRecord
 }
 
-export async function setRoutine(date: string, completedSteps: number): Promise<RoutineRecord> {
+export async function setRoutine(date: string, completedSteps: number): Promise<RoutineRecord | null> {
   const docRef = doc(db, 'routines', date)
+
+  if (completedSteps === 0) {
+    await deleteDoc(docRef)
+    return null
+  }
+
   const now = Timestamp.now()
   const existing = await getDoc(docRef)
 

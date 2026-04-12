@@ -22,17 +22,21 @@ export function useRoutine() {
 
   const updateSteps = useCallback(async (steps: number) => {
     // 낙관적 업데이트
-    setRecord(prev => {
-      if (prev) {
-        return { ...prev, completedSteps: steps }
-      }
-      return {
-        date: today,
-        completedSteps: steps,
-        createdAt: null as never,
-        updatedAt: null as never,
-      }
-    })
+    if (steps === 0) {
+      setRecord(null)
+    } else {
+      setRecord(prev => {
+        if (prev) {
+          return { ...prev, completedSteps: steps }
+        }
+        return {
+          date: today,
+          completedSteps: steps,
+          createdAt: null as never,
+          updatedAt: null as never,
+        }
+      })
+    }
 
     const updated = await setRoutine(today, steps)
     setRecord(updated)

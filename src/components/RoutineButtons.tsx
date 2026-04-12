@@ -11,8 +11,9 @@ export function RoutineButtons({ completedSteps, onSelect }: Props) {
   const [animatingStep, setAnimatingStep] = useState<number | null>(null)
 
   const handleClick = (step: number) => {
+    const newSteps = step === completedSteps ? 0 : step
     setAnimatingStep(step)
-    onSelect(step)
+    onSelect(newSteps)
     setTimeout(() => setAnimatingStep(null), 300)
   }
 
