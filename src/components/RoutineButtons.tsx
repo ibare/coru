@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { MAX_STEPS, STEP_COLORS, STEP_COLORS_DARK } from '../constants'
 import './RoutineButtons.css'
+
+const COOLDOWN_MS = 600
 
 interface Props {
   completedSteps: number
@@ -9,12 +11,22 @@ interface Props {
 
 export function RoutineButtons({ completedSteps, onSelect }: Props) {
   const [animatingStep, setAnimatingStep] = useState<number | null>(null)
+  const [locked, setLocked] = useState(false)
+  const lockTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleClick = (step: number) => {
+    if (locked) return
+
     const newSteps = step === completedSteps ? 0 : step
     setAnimatingStep(step)
+    setLocked(true)
     onSelect(newSteps)
-    setTimeout(() => setAnimatingStep(null), 300)
+
+    if (lockTimer.current) clearTimeout(lockTimer.current)
+    lockTimer.current = setTimeout(() => {
+      setAnimatingStep(null)
+      setLocked(false)
+    }, COOLDOWN_MS)
   }
 
   return (
@@ -27,7 +39,7 @@ export function RoutineButtons({ completedSteps, onSelect }: Props) {
         return (
           <button
             key={step}
-            className={`routine-btn ${isCompleted ? 'completed' : ''} ${animatingStep === step ? 'animate-pop' : ''}`}
+            className={`routine-btn ${isCompleted ? 'completed' : ''} ${animatingStep === step ? 'animate-confirm' : ''} ${locked && animatingStep !== step ? 'locked' : ''}`}
             style={{
               background: isCompleted ? color : 'var(--color-surface)',
               borderBottomColor: isCompleted ? darkColor : 'var(--color-border)',

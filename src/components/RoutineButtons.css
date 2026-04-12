@@ -56,3 +56,21 @@
   font-weight: 800;
   color: rgba(255, 255, 255, 0.9);
 }
+
+/* 클릭 확인 애니메이션 */
+@keyframes confirm-pulse {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.08); }
+  50% { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+.routine-btn.animate-confirm {
+  animation: confirm-pulse 0.5s ease-out;
+}
+
+/* 쿨다운 중 비활성 버튼 */
+.routine-btn.locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
