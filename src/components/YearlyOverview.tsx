@@ -51,7 +51,7 @@ export function YearlyOverview({ records, year }: Props) {
     <div className="yearly-overview">
       {months.map(m => (
         <div key={m.month} className="yearly-month-row">
-          <span className="yearly-month-label">{m.month}월</span>
+          <span className="yearly-month-label">{['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m.month - 1]}</span>
           <div className="yearly-bar-track">
             <div
               className="yearly-bar-fill"

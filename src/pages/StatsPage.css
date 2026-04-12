@@ -1,7 +1,10 @@
 .stats-page {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+  padding-bottom: 40px;
 }
 
 .stats-tabs {
@@ -73,10 +76,11 @@
 }
 
 .stats-chart {
-  min-height: 180px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 24px 20px;
 }
 
 .stats-loading {
@@ -87,7 +91,7 @@
 }
 
 .stats-summary {
-  padding: 16px;
+  padding: 20px;
 }
 
 .summary-grid {

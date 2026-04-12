@@ -47,27 +47,27 @@ export function SettingsPage() {
 
   const getStepTitle = () => {
     switch (step) {
-      case 'current': return '현재 코드 입력'
-      case 'new': return '새 코드 입력'
-      case 'confirm': return '새 코드 확인'
-      case 'done': return '변경 완료!'
+      case 'current': return 'Current Code'
+      case 'new': return 'New Code'
+      case 'confirm': return 'Confirm Code'
+      case 'done': return 'All Done!'
     }
   }
 
   const getStepDescription = () => {
     switch (step) {
-      case 'current': return '현재 사용 중인 Passcode를 입력하세요'
-      case 'new': return '새로운 4자리 Passcode를 입력하세요'
-      case 'confirm': return '한번 더 입력하세요'
-      case 'done': return 'Passcode가 변경되었습니다'
+      case 'current': return 'Enter your current passcode'
+      case 'new': return 'Enter a new 4-digit passcode'
+      case 'confirm': return 'Enter it one more time'
+      case 'done': return 'Your passcode has been changed'
     }
   }
 
   return (
-    <Layout title="설정" showBack>
+    <Layout title="Settings" showBack>
       <div className="settings-page animate-fade-in">
         <div className="settings-card card">
-          <h2 className="settings-title">Passcode 변경</h2>
+          <h2 className="settings-title">Change Passcode</h2>
 
           <div className="settings-step">
             <h3 className="step-title">{getStepTitle()}</h3>
@@ -89,7 +89,7 @@ export function SettingsPage() {
                 />
                 {error && (
                   <p className="settings-error">
-                    {step === 'current' ? '잘못된 코드입니다' : '코드가 일치하지 않습니다'}
+                    {step === 'current' ? 'Invalid code' : 'Codes do not match'}
                   </p>
                 )}
               </div>
@@ -104,7 +104,7 @@ export function SettingsPage() {
                     setError(false)
                   }}
                 >
-                  확인
+                  Done
                 </button>
               </div>
             )}
@@ -113,7 +113,7 @@ export function SettingsPage() {
           <div className="settings-divider" />
 
           <button className="logout-btn" onClick={logout}>
-            로그아웃
+            Log Out
           </button>
         </div>
       </div>

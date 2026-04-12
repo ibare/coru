@@ -1,7 +1,7 @@
 .yearly-overview {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .yearly-month-row {
@@ -21,7 +21,7 @@
 
 .yearly-bar-track {
   flex: 1;
-  height: 20px;
+  height: 24px;
   background: var(--step-0);
   border-radius: 10px;
   overflow: hidden;

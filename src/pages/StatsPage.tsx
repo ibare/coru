@@ -11,7 +11,6 @@ import {
   format,
   eachDayOfInterval,
 } from 'date-fns'
-import { ko } from 'date-fns/locale'
 import { Layout } from '../components/Layout'
 import { WeeklyChart } from '../components/WeeklyChart'
 import { MonthlyHeatmap } from '../components/MonthlyHeatmap'
@@ -86,9 +85,9 @@ export function StatsPage() {
       const weekEnd = endOfWeek(currentDate, { weekStartsOn: 1 })
       return `${format(weekStart, 'M/d')} - ${format(weekEnd, 'M/d')}`
     } else if (tab === 'monthly') {
-      return format(currentDate, 'yyyy년 M월', { locale: ko })
+      return format(currentDate, 'MMMM yyyy')
     } else {
-      return `${currentDate.getFullYear()}년`
+      return `${currentDate.getFullYear()}`
     }
   }
 
@@ -97,7 +96,7 @@ export function StatsPage() {
     const weekEnd = endOfWeek(currentDate, { weekStartsOn: 1 })
     const days = eachDayOfInterval({ start: weekStart, end: weekEnd })
     const dates = days.map(d => format(d, 'yyyy-MM-dd'))
-    const dayLabels = days.map(d => format(d, 'EEE', { locale: ko }))
+    const dayLabels = days.map(d => format(d, 'EEE'))
     return { dates, dayLabels }
   }
 
@@ -125,7 +124,7 @@ export function StatsPage() {
   const summary = calcSummary(records, getTotalDays())
 
   return (
-    <Layout title="통계" showBack>
+    <Layout title="Stats" showBack>
       <div className="stats-page animate-fade-in">
         <div className="stats-tabs">
           {(['weekly', 'monthly', 'yearly'] as TabType[]).map(t => (
@@ -134,7 +133,7 @@ export function StatsPage() {
               className={`stats-tab ${tab === t ? 'active' : ''}`}
               onClick={() => { setTab(t); setCurrentDate(new Date()) }}
             >
-              {t === 'weekly' ? '주간' : t === 'monthly' ? '월간' : '연간'}
+              {t === 'weekly' ? 'Weekly' : t === 'monthly' ? 'Monthly' : 'Yearly'}
             </button>
           ))}
         </div>
@@ -175,19 +174,19 @@ export function StatsPage() {
             <div className="summary-grid">
               <div className="summary-item">
                 <span className="summary-value">{summary.activeDays}/{summary.totalDays}</span>
-                <span className="summary-label">활동</span>
+                <span className="summary-label">Active</span>
               </div>
               <div className="summary-item">
-                <span className="summary-value">{summary.perfectDays}일</span>
-                <span className="summary-label">완벽</span>
+                <span className="summary-value">{summary.perfectDays}d</span>
+                <span className="summary-label">Perfect</span>
               </div>
               <div className="summary-item">
                 <span className="summary-value">{summary.averageSteps.toFixed(1)}</span>
-                <span className="summary-label">평균</span>
+                <span className="summary-label">Avg</span>
               </div>
               <div className="summary-item">
                 <span className="summary-value">{Math.round(summary.completionRate)}%</span>
-                <span className="summary-label">달성</span>
+                <span className="summary-label">Rate</span>
               </div>
             </div>
           </div>

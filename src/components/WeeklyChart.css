@@ -22,7 +22,7 @@
 }
 
 .weekly-bar-cell {
-  height: 18px;
+  height: 24px;
   border-radius: 4px;
   background: var(--step-0);
   transition: background 0.3s;

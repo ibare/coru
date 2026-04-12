@@ -31,14 +31,14 @@ export function Layout({ children, title = 'CORU', showBack }: Props) {
               <button
                 className="header-icon-btn"
                 onClick={() => navigate('/stats')}
-                title="통계"
+                title="Stats"
               >
                 &#9776;
               </button>
               <button
                 className="header-icon-btn"
                 onClick={() => navigate('/settings')}
-                title="설정"
+                title="Settings"
               >
                 &#9881;
               </button>
@@ -48,7 +48,7 @@ export function Layout({ children, title = 'CORU', showBack }: Props) {
             <button
               className="header-icon-btn"
               onClick={() => navigate('/')}
-              title="홈"
+              title="Home"
             >
               &#8962;
             </button>

@@ -30,7 +30,7 @@ export function LoginPage() {
           <span className="logo-dot">&#9679;</span>
           <h1 className="logo-text">CORU</h1>
         </div>
-        <p className="login-subtitle">코어 루틴 트래커</p>
+        <p className="login-subtitle">Core Routine Tracker</p>
 
         <div className="login-input-area">
           <PasscodeInput
@@ -39,7 +39,7 @@ export function LoginPage() {
             disabled={isChecking}
           />
           {error && (
-            <p className="login-error">잘못된 코드입니다</p>
+            <p className="login-error">Invalid code</p>
           )}
         </div>
       </div>

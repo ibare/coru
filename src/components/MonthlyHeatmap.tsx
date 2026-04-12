@@ -8,7 +8,7 @@ interface Props {
   month: number
 }
 
-const DAY_LABELS = ['월', '화', '수', '목', '금', '토', '일']
+const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 export function MonthlyHeatmap({ records, year, month }: Props) {
   const recordMap = new Map(records.map(r => [r.date, r.completedSteps]))
@@ -53,7 +53,7 @@ export function MonthlyHeatmap({ records, year, month }: Props) {
                 ? STEP_COLORS[cell.steps as keyof typeof STEP_COLORS]
                 : 'transparent',
             }}
-            title={cell.date ? `${cell.date}: ${cell.steps}단계` : ''}
+            title={cell.date ? `${cell.date}: Step ${cell.steps}` : ''}
           >
             {cell.date && (
               <span className="heatmap-cell-day">
