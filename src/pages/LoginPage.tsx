@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { PasscodeInput } from '../components/PasscodeInput'
 import { verifyPasscode } from '../services/auth.service'
 import { useAuth } from '../contexts/AuthContext'
+import { useTheme } from '../hooks/useTheme'
 import './LoginPage.css'
 
 export function LoginPage() {
   const [error, setError] = useState(false)
   const [isChecking, setIsChecking] = useState(false)
   const { login } = useAuth()
+  useTheme()
 
   const handleComplete = async (passcode: string) => {
     setIsChecking(true)

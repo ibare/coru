@@ -26,6 +26,16 @@
   --radius-sm: 12px;
 }
 
+[data-theme="dark"] {
+  --color-background: #131F24;
+  --color-surface: #1C2B33;
+  --color-surface-light: #233A44;
+  --color-text: #FFFFFF;
+  --color-text-muted: #8B9DA5;
+  --color-border: #37464F;
+  --step-0: #2A3A42;
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useTheme } from '../hooks/useTheme'
 import './Layout.css'
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 export function Layout({ children, title = 'CORU', showBack }: Props) {
   const navigate = useNavigate()
   const location = useLocation()
+  const { theme, toggle } = useTheme()
 
   const isHome = location.pathname === '/' || location.pathname === ''
 
@@ -34,6 +36,13 @@ export function Layout({ children, title = 'CORU', showBack }: Props) {
                 title="Stats"
               >
                 &#9776;
+              </button>
+              <button
+                className="header-icon-btn"
+                onClick={toggle}
+                title="Theme"
+              >
+                {theme === 'light' ? '\u263E' : '\u2600'}
               </button>
               <button
                 className="header-icon-btn"
