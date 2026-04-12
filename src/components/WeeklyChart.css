@@ -1,0 +1,45 @@
+.weekly-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.weekly-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.weekly-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+.weekly-bar-cell {
+  height: 18px;
+  border-radius: 4px;
+  background: var(--step-0);
+  transition: background 0.3s;
+}
+
+.weekly-bar-cell.filled {
+  animation: fill-dot 0.3s ease-out;
+}
+
+.weekly-day-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-text-muted);
+}
+
+.weekly-step-label {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--color-text);
+}

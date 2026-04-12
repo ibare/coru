@@ -1,0 +1,101 @@
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settings-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.settings-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--color-text);
+}
+
+.settings-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.step-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.step-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.settings-error {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  font-weight: 800;
+  animation: fade-in 0.2s ease-out;
+}
+
+.done-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.done-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.settings-divider {
+  height: 2px;
+  background: var(--color-border);
+  border-radius: 1px;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--color-error);
+  border-bottom: 4px solid #CC3C3C;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-error);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.logout-btn:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 75, 75, 0.1);
+}

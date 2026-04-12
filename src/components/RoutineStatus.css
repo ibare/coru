@@ -1,0 +1,30 @@
+.routine-status {
+  display: flex;
+  justify-content: center;
+}
+
+.status-dots {
+  display: flex;
+  gap: 16px;
+}
+
+.status-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--step-0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.status-dot.filled {
+  animation: fill-dot 0.3s ease-out;
+}
+
+.dot-check {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  font-weight: 800;
+}

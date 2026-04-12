@@ -1,0 +1,49 @@
+.routine-buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.routine-btn {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 120px;
+  border: 2px solid var(--color-border);
+  border-bottom: 5px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: transform 0.1s ease, background 0.2s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.routine-btn:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+.routine-btn-number {
+  font-family: 'Nunito', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.routine-btn.completed .routine-btn-number {
+  opacity: 0.9;
+}
+
+.routine-btn-check {
+  font-size: 1rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+}

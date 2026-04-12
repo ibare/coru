@@ -1,0 +1,44 @@
+.yearly-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.yearly-month-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.yearly-month-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-text-muted);
+  width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.yearly-bar-track {
+  flex: 1;
+  height: 20px;
+  background: var(--step-0);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.yearly-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease-out;
+  min-width: 0;
+}
+
+.yearly-rate {
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--color-text);
+  width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
