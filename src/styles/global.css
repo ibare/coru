@@ -4,12 +4,12 @@
   --color-secondary: #CE82FF;
   --color-secondary-dark: #A55CD4;
   --color-warning: #FF9600;
-  --color-background: #131F24;
-  --color-surface: #1C2B33;
-  --color-surface-light: #233A44;
-  --color-text: #FFFFFF;
-  --color-text-muted: #8B9DA5;
-  --color-border: #37464F;
+  --color-background: #F7F7F7;
+  --color-surface: #FFFFFF;
+  --color-surface-light: #F0F0F0;
+  --color-text: #3C3C3C;
+  --color-text-muted: #AFAFAF;
+  --color-border: #E5E5E5;
   --color-error: #FF4B4B;
 
   --step-1: #FF4B4B;
@@ -20,7 +20,7 @@
   --step-3-dark: #CCA000;
   --step-4: #58CC02;
   --step-4-dark: #46A302;
-  --step-0: #2A3A42;
+  --step-0: #E5E5E5;
 
   --radius: 16px;
   --radius-sm: 12px;

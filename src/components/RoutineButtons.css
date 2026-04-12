@@ -39,6 +39,15 @@
 }
 
 .routine-btn.completed .routine-btn-number {
+  color: #FFFFFF;
+}
+
+.routine-btn:not(.completed) {
+  border-color: var(--color-border);
+  border-bottom-color: var(--color-border);
+}
+
+.routine-btn.completed .routine-btn-number {
   opacity: 0.9;
 }
 
