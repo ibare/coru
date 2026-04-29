@@ -1,4 +1,5 @@
 import { MAX_STEPS, STEP_COLORS } from '../constants'
+import { isStepOn } from '../lib/steps'
 import './RoutineStatus.css'
 
 interface Props {
@@ -10,7 +11,7 @@ export function RoutineStatus({ completedSteps }: Props) {
     <div className="routine-status">
       <div className="status-dots">
         {Array.from({ length: MAX_STEPS }, (_, i) => i + 1).map(step => {
-          const isCompleted = step <= completedSteps
+          const isCompleted = isStepOn(completedSteps, step)
           const color = STEP_COLORS[step as keyof typeof STEP_COLORS]
 
           return (

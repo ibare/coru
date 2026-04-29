@@ -24,10 +24,10 @@ export async function getRoutine(date: string): Promise<RoutineRecord | null> {
   return docSnap.data() as RoutineRecord
 }
 
-export async function setRoutine(date: string, completedSteps: number): Promise<RoutineRecord | null> {
+export async function setRoutine(date: string, mask: number): Promise<RoutineRecord | null> {
   const docRef = doc(db, 'routines', date)
 
-  if (completedSteps === 0) {
+  if (mask === 0) {
     await deleteDoc(docRef)
     return null
   }
@@ -37,7 +37,7 @@ export async function setRoutine(date: string, completedSteps: number): Promise<
 
   const record: RoutineRecord = {
     date,
-    completedSteps,
+    completedSteps: mask,
     createdAt: existing.exists() ? existing.data().createdAt : now,
     updatedAt: now,
   }

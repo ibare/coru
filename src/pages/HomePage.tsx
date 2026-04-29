@@ -3,6 +3,8 @@ import { Layout } from '../components/Layout'
 import { RoutineStatus } from '../components/RoutineStatus'
 import { RoutineButtons } from '../components/RoutineButtons'
 import { useRoutine } from '../hooks/useRoutine'
+import { popcount } from '../lib/steps'
+import { MAX_STEPS } from '../constants'
 import './HomePage.css'
 
 export function HomePage() {
@@ -11,6 +13,7 @@ export function HomePage() {
   const dateStr = format(today, 'MMMM d, yyyy')
   const dayStr = format(today, 'EEEE')
   const completedSteps = record?.completedSteps ?? 0
+  const doneCount = popcount(completedSteps)
 
   if (isLoading) {
     return (
@@ -31,10 +34,10 @@ export function HomePage() {
         </div>
 
         <div className="home-status card">
-          {completedSteps > 0 ? (
+          {doneCount > 0 ? (
             <>
               <p className="status-text">
-                Step <strong>{completedSteps}</strong> completed!
+                <strong>{doneCount}</strong> of {MAX_STEPS} completed!
               </p>
               <RoutineStatus completedSteps={completedSteps} />
             </>

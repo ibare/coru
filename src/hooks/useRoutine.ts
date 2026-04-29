@@ -20,25 +20,25 @@ export function useRoutine() {
     fetchToday()
   }, [fetchToday])
 
-  const updateSteps = useCallback(async (steps: number) => {
+  const updateSteps = useCallback(async (mask: number) => {
     // 낙관적 업데이트
-    if (steps === 0) {
+    if (mask === 0) {
       setRecord(null)
     } else {
       setRecord(prev => {
         if (prev) {
-          return { ...prev, completedSteps: steps }
+          return { ...prev, completedSteps: mask }
         }
         return {
           date: today,
-          completedSteps: steps,
+          completedSteps: mask,
           createdAt: null as never,
           updatedAt: null as never,
         }
       })
     }
 
-    const updated = await setRoutine(today, steps)
+    const updated = await setRoutine(today, mask)
     setRecord(updated)
   }, [today])
 

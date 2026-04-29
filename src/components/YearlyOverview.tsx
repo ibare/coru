@@ -1,4 +1,5 @@
 import { STEP_COLORS } from '../constants'
+import { highestStep } from '../lib/steps'
 import type { RoutineRecord } from '../types'
 import './YearlyOverview.css'
 
@@ -34,8 +35,8 @@ export function YearlyOverview({ records, year }: Props) {
     const totalDays = isCurrentMonth ? now.getDate() : daysInMonth
     const monthRecords = records.filter(r => r.date.startsWith(`${year}-${monthStr}`))
     const activeDays = monthRecords.filter(r => r.completedSteps > 0).length
-    const totalSteps = monthRecords.reduce((sum, r) => sum + r.completedSteps, 0)
-    const averageSteps = activeDays > 0 ? totalSteps / activeDays : 0
+    const totalHighest = monthRecords.reduce((sum, r) => sum + highestStep(r.completedSteps), 0)
+    const averageSteps = activeDays > 0 ? totalHighest / activeDays : 0
     const completionRate = totalDays > 0 ? (activeDays / totalDays) * 100 : 0
 
     return { month, activeDays, totalDays, averageSteps, completionRate }

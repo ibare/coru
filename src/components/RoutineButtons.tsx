@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { MAX_STEPS, STEP_COLORS, STEP_COLORS_DARK } from '../constants'
+import { isStepOn, toggleStep } from '../lib/steps'
 import './RoutineButtons.css'
 
 const COOLDOWN_MS = 600
@@ -17,10 +18,10 @@ export function RoutineButtons({ completedSteps, onSelect }: Props) {
   const handleClick = (step: number) => {
     if (locked) return
 
-    const newSteps = step === completedSteps ? 0 : step
+    const newMask = toggleStep(completedSteps, step)
     setAnimatingStep(step)
     setLocked(true)
-    onSelect(newSteps)
+    onSelect(newMask)
 
     if (lockTimer.current) clearTimeout(lockTimer.current)
     lockTimer.current = setTimeout(() => {
@@ -32,7 +33,7 @@ export function RoutineButtons({ completedSteps, onSelect }: Props) {
   return (
     <div className="routine-buttons-grid">
       {Array.from({ length: MAX_STEPS }, (_, i) => i + 1).map(step => {
-        const isCompleted = step <= completedSteps
+        const isCompleted = isStepOn(completedSteps, step)
         const color = STEP_COLORS[step as keyof typeof STEP_COLORS]
         const darkColor = STEP_COLORS_DARK[step as keyof typeof STEP_COLORS_DARK]
 

@@ -16,7 +16,8 @@ import { WeeklyChart } from '../components/WeeklyChart'
 import { MonthlyHeatmap } from '../components/MonthlyHeatmap'
 import { YearlyOverview } from '../components/YearlyOverview'
 import { getRoutinesByRange } from '../services/routine.service'
-import { MAX_STEPS } from '../constants'
+import { FULL_MASK } from '../constants'
+import { highestStep } from '../lib/steps'
 import type { RoutineRecord, StatsSummary } from '../types'
 import './StatsPage.css'
 
@@ -24,9 +25,9 @@ type TabType = 'weekly' | 'monthly' | 'yearly'
 
 function calcSummary(records: RoutineRecord[], totalDays: number): StatsSummary {
   const activeDays = records.filter(r => r.completedSteps > 0).length
-  const perfectDays = records.filter(r => r.completedSteps === MAX_STEPS).length
-  const totalSteps = records.reduce((sum, r) => sum + r.completedSteps, 0)
-  const averageSteps = activeDays > 0 ? totalSteps / activeDays : 0
+  const perfectDays = records.filter(r => r.completedSteps === FULL_MASK).length
+  const totalHighest = records.reduce((sum, r) => sum + highestStep(r.completedSteps), 0)
+  const averageSteps = activeDays > 0 ? totalHighest / activeDays : 0
   const completionRate = totalDays > 0 ? (activeDays / totalDays) * 100 : 0
 
   return { totalDays, activeDays, perfectDays, averageSteps, completionRate }

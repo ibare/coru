@@ -1,4 +1,5 @@
 export const MAX_STEPS = 4
+export const FULL_MASK = (1 << MAX_STEPS) - 1
 export const PASSCODE_LENGTH = 4
 
 export const STEP_COLORS = {
